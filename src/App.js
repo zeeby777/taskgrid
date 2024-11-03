@@ -1,23 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import Grid from './Grid';
+import { useState } from 'react';
 
 function App() {
+  const [size, setSize] = useState(16)
+  function handleInputChange(e){
+    setSize(e.target.value)
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type="range" min={0} max={16} onChange={handleInputChange}/>
+      <p>Rzędy: {size}</p>
+        <Grid size={size} />
     </div>
   );
 }
